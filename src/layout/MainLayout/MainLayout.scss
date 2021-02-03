@@ -1,0 +1,16 @@
+.main-layout {
+   display: flex;
+   .header {
+   }
+   .content {
+      margin: 5.8rem 0 0 25rem;
+   }
+   .sidebar {
+      margin-top: 58px;
+      left: -250px;
+      width: 250px;
+      &.open {
+         left: 0;
+      }
+   }
+}

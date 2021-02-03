@@ -1,0 +1,9 @@
+.sidebar {
+   z-index: 1;
+   top: 0;
+   background: #2f323a;
+   position: fixed;
+   height: calc(100% - 9%);
+   overflow-y: auto;
+   transition: all 0.35s ease;
+}
