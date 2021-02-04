@@ -1,0 +1,35 @@
+.modal {
+   position: fixed;
+   width: 100vw;
+   height: 100vh;
+   top: 0;
+   left: 0;
+   background-color: rgba(0, 0, 0, 0.3);
+   z-index: 99;
+   opacity: 0;
+   visibility: hidden;
+   transition: all 0.25s linear;
+   &.open {
+      opacity: 1;
+      visibility: visible;
+   }
+   &__title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 3rem;
+   }
+   .modal-box {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      width: 50rem;
+      padding: 2rem 1.5rem;
+      border-radius: 4px;
+      &__select {
+         margin-bottom: 2rem;
+      }
+   }
+}
