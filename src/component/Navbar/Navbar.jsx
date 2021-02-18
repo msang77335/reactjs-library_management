@@ -33,6 +33,26 @@ function Navbar(props) {
                ]}
             />
          </li>
+         <li className="navbar__item">
+            <DropDown
+               name="Account Management"
+               icon="fa fa-book"
+               listItem={[
+                  {
+                     name: "Reader Awaiting",
+                     link: "reader-awaiting",
+                  },
+                  {
+                     name: "Reader",
+                     link: "reader",
+                  },
+                  {
+                     name: "Employee",
+                     link: "employee",
+                  },
+               ]}
+            />
+         </li>
       </ul>
    );
 }

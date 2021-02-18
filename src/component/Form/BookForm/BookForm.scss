@@ -1,0 +1,23 @@
+.book-form {
+   &__date {
+      display: flex;
+      justify-content: space-between;
+   }
+   &__image {
+      grid-row: 1/6;
+      grid-column: 2/3;
+      text-align: center;
+   }
+   &__list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 0 1.5rem;
+   }
+   &__item {
+      //height: 6.5rem;
+      &-textarea {
+         grid-row: 6/8;
+         grid-column: 2/3;
+      }
+   }
+}

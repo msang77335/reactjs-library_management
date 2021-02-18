@@ -1,0 +1,18 @@
+.reader-manage {
+   .table {
+      &-cell {
+         width: 18.75%;
+         &__id {
+            width: 10%;
+         }
+      }
+      &-box {
+         .first-cell {
+            width: 5%;
+         }
+         .last-cell {
+            width: 10%;
+         }
+      }
+   }
+}
