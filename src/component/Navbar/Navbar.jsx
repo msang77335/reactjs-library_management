@@ -44,7 +44,7 @@ function Navbar(props) {
                   },
                   {
                      name: "Reader",
-                     link: "reader",
+                     link: "readers",
                   },
                   {
                      name: "Employee",

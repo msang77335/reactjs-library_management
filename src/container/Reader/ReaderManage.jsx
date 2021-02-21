@@ -26,11 +26,7 @@ function ReaderManage(props) {
    }, [accounts]);
    return (
       <div className="reader-manage content__container">
-         <ContentTitle title="Readers">
-            <Link className="btn btn--success btn-link" to="/readers/new">
-               <i className="fa fa-plus" aria-hidden="true"></i>New
-            </Link>
-         </ContentTitle>
+         <ContentTitle title="Readers" />
          <Table>
             <TableHead
                headingColums={["Id", "Name", "Username", "Email", "Phone"]}
@@ -45,7 +41,7 @@ function ReaderManage(props) {
                   <TableCell>{reader.phone}</TableCell>
                   <TableLastCell>
                      <Link
-                        to={`/reader/${reader.id}`}
+                        to={`/readers/${reader.id}`}
                         className="btn btn-link btn--warning"
                      >
                         <i className="fa fa-eye" aria-hidden="true"></i>

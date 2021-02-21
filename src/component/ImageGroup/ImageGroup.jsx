@@ -18,7 +18,9 @@ function ImageGroup(props) {
          <input
             type="file"
             ref={(e) => {
-               innerRef(e);
+               if (typeof innerRef === "function") {
+                  innerRef(e);
+               }
                imgRef.current = e;
             }}
             onChange={onChange}

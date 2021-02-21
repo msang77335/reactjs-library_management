@@ -10,6 +10,7 @@ import NewBook from "./container/Book/NewBook/NewBook";
 import EditBook from "./container/Book/EditBook/EditBook";
 import ReaderAwaiting from "./container/Reader/Awaiting/ReaderAwaiting";
 import ReaderManage from "./container/Reader/ReaderManage";
+import DetailReaders from "./container/Reader/DetailReaders/DetailReaders";
 
 function App() {
    return (
@@ -50,8 +51,13 @@ function App() {
                />
                <PrivateRoute
                   exact
-                  path="/reader/"
+                  path="/readers/"
                   component={ReaderManage}
+                  layout={MainLayout}
+               />
+               <PrivateRoute
+                  path="/readers/:id/"
+                  component={DetailReaders}
                   layout={MainLayout}
                />
                <Route path="/login" component={Login} />
