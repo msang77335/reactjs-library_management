@@ -1,19 +1,32 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { saveUser } from "../../actions";
 import Button from "../Button/Button";
 import "./Login.scss";
 import InputGroup from "../InputGroup/InputGroup";
 import useInput from "../../hooks/useInput";
+import userApi from "../../api/userApi";
 
 function Login(props) {
+   const dispatch = useDispatch();
+   const history = useHistory();
+   const { getMe, signIn } = userApi;
    const [username, handleUsernameChange, resetUsername] = useInput("");
    const [password, handlePasswordChange, resetPassword] = useInput("");
    const { register, handleSubmit, errors } = useForm({
       reValidateMode: "onSubmit",
    });
    const onSubmit = (data) => {
-      console.log(data);
+      signIn(data).then((res) => {
+         dispatch(saveUser(res));
+         history.push("/");
+         // localStorage.setItem("accessToken", res.token);
+         // getMe().then((response) => {
+         //    dispatch(saveUser(response.user));
+         // });
+      });
    };
    return (
       <div className="login">

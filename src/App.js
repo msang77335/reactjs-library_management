@@ -1,9 +1,12 @@
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { saveUser } from "../src/actions/index";
+import { useEffect, useState } from "react";
+import userApi from "../src/api/userApi";
 import Login from "./component/Login/Login";
 import MainLayout from "./layout/MainLayout/MainLayout";
 import PrivateRoute from "./component/Routes/PrivateRoute/PrivateRoute";
-import Home from "./component/Home/Home";
 import CategoryManage from "./container/Category/CategoryManage";
 import BookManage from "./container/Book/BookManage";
 import NewBook from "./container/Book/NewBook/NewBook";
@@ -11,58 +14,101 @@ import EditBook from "./container/Book/EditBook/EditBook";
 import ReaderAwaiting from "./container/Reader/Awaiting/ReaderAwaiting";
 import ReaderManage from "./container/Reader/ReaderManage";
 import DetailReaders from "./container/Reader/DetailReaders/DetailReaders";
+import EmployeeManage from "./container/Employee/EmployeeManage";
+import EmployeeInfo from "./container/Employee/EmployeeInfo/EmployeeInfo";
+import Home from "./container/Home/Home";
+import Error from "./container/Error/Error";
 
 function App() {
+   const [isLoad, setIsLoad] = useState(false);
+   const dispatch = useDispatch();
+   const { getMe } = userApi;
+   useEffect(() => {
+      getMe()
+         .then((res) => {
+            //dispatch(saveUser(res));
+         })
+         .catch(() => {
+            //localStorage.removeItem("accessToken");
+         })
+         .finally(() => {
+            setIsLoad(true);
+         });
+   });
    return (
       <div className="App">
-         <Router>
-            <Switch>
-               <PrivateRoute
-                  exact
-                  path="/"
-                  component={Home}
-                  layout={MainLayout}
-               />
-               <PrivateRoute
-                  path="/book-categories/"
-                  component={CategoryManage}
-                  layout={MainLayout}
-               />
-               <PrivateRoute
-                  exact
-                  path="/books/"
-                  component={BookManage}
-                  layout={MainLayout}
-               />
-               <PrivateRoute
-                  path="/books/new"
-                  component={NewBook}
-                  layout={MainLayout}
-               />
-               <PrivateRoute
-                  path="/books/:id"
-                  component={EditBook}
-                  layout={MainLayout}
-               />
-               <PrivateRoute
-                  path="/reader-awaiting"
-                  component={ReaderAwaiting}
-                  layout={MainLayout}
-               />
-               <PrivateRoute
-                  exact
-                  path="/readers/"
-                  component={ReaderManage}
-                  layout={MainLayout}
-               />
-               <PrivateRoute
-                  path="/readers/:id/"
-                  component={DetailReaders}
-                  layout={MainLayout}
-               />
-               <Route path="/login" component={Login} />
-            </Switch>
-         </Router>
+         {isLoad && (
+            <Router>
+               <Switch>
+                  <PrivateRoute
+                     exact
+                     path="/"
+                     role={["Admin", "Thủ thư", "Thủ kho", "User"]}
+                     component={Home}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     path="/book-categories/"
+                     role={["Admin"]}
+                     component={CategoryManage}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     exact
+                     path="/books/"
+                     role={["Admin"]}
+                     component={BookManage}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     path="/books/new"
+                     role={["Admin"]}
+                     component={NewBook}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     path="/books/:id"
+                     role={["Admin"]}
+                     component={EditBook}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     path="/reader-awaiting"
+                     role={["Admin"]}
+                     component={ReaderAwaiting}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     exact
+                     path="/readers/"
+                     role={["Admin"]}
+                     component={ReaderManage}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     path="/readers/:id/"
+                     role={["Admin"]}
+                     component={DetailReaders}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     exact
+                     path="/employee/"
+                     role={["Admin"]}
+                     component={EmployeeManage}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     path="/employee/:id/"
+                     role={["Admin"]}
+                     component={EmployeeInfo}
+                     layout={MainLayout}
+                  />
+                  <Route path="/login" component={Login} />
+                  <Route path="/not-found" component={Error} />
+               </Switch>
+            </Router>
+         )}
       </div>
    );
 }

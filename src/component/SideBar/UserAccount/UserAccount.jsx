@@ -1,22 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import "./UserAccount.scss";
 
 UserAccount.propTypes = {};
 
 function UserAccount(props) {
+   const user = useSelector((state) => state.userReducer.currentUser);
    return (
       <div className="useraccount">
          <div className="useraccount__imgbox">
-            <img
-               src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-               alt=""
-               className="useraccount__img"
-            />
+            <img src={user.img} alt="" className="useraccount__img" />
          </div>
          <div className="useraccount__info">
-            <p className="useraccount__name">Minh Sang</p>
-            <p className="useraccount__role">Admin</p>
+            <p className="useraccount__name">{user.name}</p>
+            <p className="useraccount__role">{user.role.label}</p>
          </div>
       </div>
    );
