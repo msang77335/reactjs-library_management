@@ -1,0 +1,72 @@
+.book {
+   &__list {
+      margin-top: 2rem;
+      padding: 0 1rem;
+      display: flex;
+      margin-left: -2.5rem;
+   }
+   &__item {
+      cursor: pointer;
+      overflow: hidden;
+      width: calc(20% - 2.5rem);
+      margin-left: 2.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      padding: 1rem 0;
+      border: 1px solid transparent;
+      transition: all 0.3s linear;
+      position: relative;
+      &-bg {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         z-index: 1;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+      &-view {
+         width: 4rem;
+         height: 4rem;
+         background-color: #33b5e5;
+         border-radius: 50%;
+         font-size: 1.8rem;
+         color: #fff;
+         border: none;
+         opacity: 0;
+         visibility: hidden;
+         transform: scale(0.7);
+         transition: all 0.15s linear;
+      }
+      &-imgbox {
+         margin: 0 auto;
+         width: 12rem;
+         height: 17.5rem;
+         box-shadow: 0 0 10.32px 1.68px rgba(0, 0, 0, 0.2);
+      }
+      &-info {
+         padding: 0 1rem;
+         margin-top: 1rem;
+         text-align: center;
+      }
+      &-name {
+         color: #3a4752;
+         font-size: 1.5rem;
+      }
+      &-author {
+         margin-top: 0.5rem;
+         font-size: 1.2rem;
+         color: #738797;
+      }
+      &:hover {
+         border-color: #33b5e5;
+         .book__item-view {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+         }
+      }
+   }
+}

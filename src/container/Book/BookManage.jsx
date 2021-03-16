@@ -31,7 +31,7 @@ function BookManage(props) {
    if (isLoading == true) return <p>Loading.....</p>;
    return (
       <div className="book-manage content__container">
-         <ContentTitle title="Books">
+         <ContentTitle title="Book Manage">
             <Link className="btn btn--success btn-link" to="/books/new">
                <i className="fa fa-plus" aria-hidden="true"></i>New
             </Link>

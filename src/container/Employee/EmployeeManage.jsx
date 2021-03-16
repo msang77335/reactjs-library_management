@@ -25,7 +25,7 @@ function EmployeeManage(props) {
    }, [accounts]);
    return (
       <div className="reader-manage content__container">
-         <ContentTitle title="Employee" />
+         <ContentTitle title="Employee Manage" />
          <Table>
             <TableHead
                headingColums={["Id", "Name", "Role", "Email", "Phone"]}

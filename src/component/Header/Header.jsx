@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logOutUser } from "../../actions";
 import PropTypes from "prop-types";
@@ -31,6 +31,9 @@ function Header(props) {
             <Button onClick={handleLogoutClick} className="header__logout">
                <i className="fa fa-sign-out" aria-hidden="true"></i> Logout
             </Button>
+            <Link className="cart" to="/cart/">
+               <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+            </Link>
          </div>
       </header>
    );

@@ -18,6 +18,17 @@ function Navbar(props) {
             </NavLink>
          </li>
          <li className="navbar__item">
+            <NavLink
+               exact
+               to="/book"
+               className="navbar__link"
+               activeClassName="active"
+            >
+               <i className="fa fa-home" aria-hidden="true"></i>
+               <span>Book</span>
+            </NavLink>
+         </li>
+         <li className="navbar__item">
             <DropDown
                name="Books Management"
                icon="fa fa-book"

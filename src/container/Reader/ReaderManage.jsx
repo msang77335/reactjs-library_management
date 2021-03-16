@@ -26,7 +26,7 @@ function ReaderManage(props) {
    }, [accounts]);
    return (
       <div className="reader-manage content__container">
-         <ContentTitle title="Readers" />
+         <ContentTitle title="Readers Manage" />
          <Table>
             <TableHead
                headingColums={["Id", "Name", "Username", "Email", "Phone"]}

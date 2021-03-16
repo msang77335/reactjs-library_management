@@ -18,6 +18,9 @@ import EmployeeManage from "./container/Employee/EmployeeManage";
 import EmployeeInfo from "./container/Employee/EmployeeInfo/EmployeeInfo";
 import Home from "./container/Home/Home";
 import Error from "./container/Error/Error";
+import BookView from "./container/Book/BookView/BookView";
+import BookInfo from "./container/Book/BookView/BookInfo/BookInfo";
+import CartManage from "./container/Cart/CartManage";
 
 function App() {
    const [isLoad, setIsLoad] = useState(false);
@@ -102,6 +105,25 @@ function App() {
                      path="/employee/:id/"
                      role={["Admin"]}
                      component={EmployeeInfo}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     exact
+                     path="/book/"
+                     role={["Admin"]}
+                     component={BookView}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     path="/book/:id"
+                     role={["Admin"]}
+                     component={BookInfo}
+                     layout={MainLayout}
+                  />
+                  <PrivateRoute
+                     path="/cart/"
+                     role={["Admin"]}
+                     component={CartManage}
                      layout={MainLayout}
                   />
                   <Route path="/login" component={Login} />

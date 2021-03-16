@@ -46,7 +46,7 @@ function CategoryManage(props) {
    if (isLoading == true) return <p>Loading...</p>;
    return (
       <div className="category-manage content__container">
-         <ContentTitle title="Categories">
+         <ContentTitle title="Categories Manage">
             <Button className=" btn--success" onClick={handleNewClick}>
                <i className="fa fa-plus" aria-hidden="true"></i>New
             </Button>
